@@ -3,18 +3,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Habit Tracker</title>
+    <title>Habitifyr</title>
     <link rel="stylesheet" type="text/css" href="{% static 'habit_tracker/css/styles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'habit_tracker/img/favicon.png' %}">
+    <style>
+        /* Custom font for the text */
+        p, h1, ul, .navbar a {
+            font-family: "Poppins";
+        }
+
+        .custom-button {
+            background-color: #90CAF9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-button:hover {
+            background-color: #252525;
+            color: white;
+        }
+        
+        .custom-image {
+            max-width: 100%;
+            height: auto;
+            float: right;
+            margin-top: -490px;
+            margin-right: 150px;
+        }
+        
+        .content {
+            margin-top: 120px;
+            margin-left: 70px;
+        }
+        
+        .paragraph {
+            width: 600px;
+            word-wrap: break-word;
+            margin-bottom: 30px;
+        }
+
+        /*  Navigation bar */
+        .navbar {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 70px;
+            margin-top: 6px;
+        }
+
+        .navbar a:hover {
+            color: #90CAF9;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 150px;
+            margin-left: 55px;
+            margin-top: 15px;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            margin-left: 10px;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!--Custom Font-->
 </head>
 <body>
-    <h1>Welcome to Habit Tracker!</h1>
-    <p>This is a simple habit tracking application designed to help you develop and maintain healthy habits.</p>
-    <p>With Habit Tracker, you can:</p>
-    <ul>
-        <li>Set and track your daily, weekly, or monthly habits</li>
-        <li>Write down your tasks to stay on track</li>
-        <li>Easily customize and manage your habits</li>
-    </ul>
-    <p>Start tracking your habits today and build a better routine!</p>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-logo">
+                <img src="{% static 'habit_tracker/img/logo-01.png' %}" alt="Logo">
+            </div>
+            <div class="navbar-links">
+                <a href="#">Home</a>
+                <a href="#">How to Use</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Welcome to Habitifyr!</h1>
+            <p class="paragraph">This is a simple habit tracking application designed to help you develop and maintain healthy habits.</p>
+            <p>With Habit Tracker, <b><i> you can: </b></i></p>
+            <ul>
+                <li>Set and track your daily, weekly, or monthly habits</li>
+                <li>Write down your tasks to stay on track</li>
+                <li>Easily customize and manage your habits</li>
+            </ul>
+            <p>Start tracking your habits today and build a better routine!</p>
+
+            <button class="custom-button">Get Started</button>
+        </div>
+        
+        <div class="image-container">
+            <img class="custom-image" src="{% static 'habit_tracker/img/Checklist-pana.png' %}" alt="Example Image" width="600">
+        </div>
+    </div>
 </body>
 </html>
