@@ -7,8 +7,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'habit_tracker/css/styles.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'habit_tracker/img/favicon.png' %}">
     <style>
-        /* Custom font for the text */
-        p, h1, ul, .navbar a {
+
+        body {
+            display: grid;
+            align-content: space-between; 
+            margin: 0;
             font-family: "Poppins";
         }
 
@@ -34,7 +37,7 @@
             max-width: 100%;
             height: auto;
             float: right;
-            margin-top: -490px;
+            margin-top: -670px;
             margin-right: 150px;
         }
         
@@ -49,7 +52,7 @@
             margin-bottom: 30px;
         }
 
-        /*  Navigation bar */
+        /* Navigation bar */
         .navbar {
             background-color: white;
             padding: 10px;
@@ -88,6 +91,92 @@
         .navbar-links a {
             margin-left: 10px;
         }
+
+        /* Form */
+        .signup-form {
+            margin-top: 50px;
+            text-align: center;
+    }
+
+        .signup-form h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+    }
+
+        .signup-form p {
+            font-size: 14px;
+    }
+
+        .signup-form p a {
+            padding-top: 30px ;
+    }
+
+        .signup-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+    }
+
+        .signup-form input[type="text"],
+        .signup-form input[type="email"],
+        .signup-form input[type="password"] {
+            width: 300px;
+            padding: 19px;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+    }
+
+        .signup-form button[type="submit"] {
+            background-color: #90CAF9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 85px;
+            transition: background-color 0.3s;
+    }
+
+        .signup-form button[type="submit"]:hover {
+            background-color: #252525;
+    }
+
+        /* Footer */
+        .footer {
+            background-color: #252525;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: "Poppins";
+            padding: 35px;
+    }
+
+        .footer-links a {
+            color: white;
+            margin-left: 5px;
+            padding-right: 50px;
+            text-decoration: none;
+            transition: color 0.3s;
+    }
+
+        .footer-links a:hover {
+            color: #90CAF9;
+    }
+
+        .copyrights {
+            padding-left: 50px;
+    }
+
+        .content {
+            margin-bottom: 175px; 
+    }
+
     </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!--Custom Font-->
@@ -99,7 +188,7 @@
                 <img src="{% static 'habit_tracker/img/logo-01.png' %}" alt="Logo">
             </div>
             <div class="navbar-links">
-                <a href="#">Home</a>
+                <a href="{% url 'home' %}">Home</a>
                 <a href="#">How to Use</a>
             </div>
         </div>
@@ -121,6 +210,34 @@
         <div class="image-container">
             <img class="custom-image" src="{% static 'habit_tracker/img/Checklist-pana.png' %}" alt="Example Image" width="600">
         </div>
+
+        <div class="signup-form">
+            <h2>Start tracking now!</h2>
+            <p>Sign up and build good habits with Habitifyr.</p>
+            <form action="#" method="post">
+                <input type="text" id="name" placeholder="Name" name="name" required>
+        
+                <input type="email" id="email" placeholder="Email" name="email" required>
+        
+                <input type="password" id="password" placeholder="Password" name="password" required>
+        
+            <p>By signing up you are accepting Habitifyr's <br>
+            <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
+        
+            <button type="submit">Sign up</button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <div class="copyrights">
+                © 2023 Raghad Alruhaimi
+            </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+        </footer>
     </div>
+    
 </body>
 </html>
