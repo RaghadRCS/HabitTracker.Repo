@@ -146,6 +146,27 @@
             background-color: #252525;
     }
 
+        /* Select field */
+        .signup-form select {
+            width: 341px;
+            padding: 20px;
+            margin-bottom: 30px;
+            margin-right: 2px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('./static/habit_tracker/img/down.png'); /* Used custom icon instead of default due to padding issues */
+            background-repeat: no-repeat;
+            background-position: right 20px center; 
+            background-size: 20px;
+    }
+
+        .signup-form select:hover,
+        .signup-form select:focus {
+            border-color: #90CAF9;
+    }
+
         /* Footer */
         .footer {
             background-color: #252525;
@@ -216,21 +237,33 @@
             <p>Sign up and build good habits with Habitifyr.</p>
             <form action="#" method="post">
                 <input type="text" id="name" placeholder="Name" name="name" required>
-        
+                
                 <input type="email" id="email" placeholder="Email" name="email" required>
-        
+                
                 <input type="password" id="password" placeholder="Password" name="password" required>
-        
-            <p>By signing up you are accepting Habitifyr's <br>
-            <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
-        
-            <button type="submit">Sign up</button>
+                
+                <select id="occupation-select" name="occupation">
+                    <option value="" disabled selected>Select Occupation</option>
+                    <option value="student">Student</option>
+                    <option value="Employed">Employed</option>
+                    <option value="homemaker">Homemaker</option>
+                    <option value="retired">Retired</option>
+                    <option value="freelancer">Freelancer</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="other">Other</option>
+                  </select>          
+
+                <p>By signing up you are accepting Habitifyr's<br>
+                    <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
+                
+                <button type="submit">Sign up</button>
             </form>
         </div>
 
+
         <footer class="footer">
             <div class="copyrights">
-                © 2023 Raghad Alruhaimi
+                © All Rights Reserved 2024
             </div>
                 <div class="footer-links">
                     <a href="#">Privacy</a>
