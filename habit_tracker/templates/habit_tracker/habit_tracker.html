@@ -1,0 +1,266 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habitifyr</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'habit_tracker/css/styles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'habit_tracker/img/favicon.png' %}">
+    <style>
+      
+        body {
+            display: grid;
+            align-content: space-between; 
+            margin: 0;
+            font-family: "Poppins";
+        }
+
+        /* Navigation bar */
+        .navbar {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 70px;
+            margin-top: 6px;
+        }
+
+        .navbar a:hover {
+            color: #90CAF9;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 150px;
+            margin-left: 55px;
+            margin-top: 15px;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            margin-left: 10px;
+        }
+
+        #btnAdd {
+          text-transform: uppercase;
+          background: #22B473;
+          border: none;
+          border-radius: 3px;
+          font-weight: bold;
+          color: #FFF;
+          padding: 3px 10px;
+          cursor: pointer;
+          width: auto;
+        }
+
+      .habits-parent {
+        border: 2px solid #777;
+        margin-top: 5px;
+        width: 35%;
+      }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 400px;
+    }
+
+    li {
+      padding: 5px 10px;
+      color: #000;
+    }
+
+    li span {
+      padding-left: 17px;
+    }
+
+    li a {
+      padding: 0 5px 0 5px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .habits-parent {
+      border: 2px solid #777;
+      margin-top: 5px;
+      width: 35%;
+      margin-bottom: 20px;
+    }
+
+    .habits-parent h4 {
+      margin-left: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 400px;
+    }
+
+
+    .content {
+      margin-top: 100px;
+      margin-bottom: 175px; 
+    }
+
+    #listBox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    #inItemText {
+      margin-right: 20px;
+    }
+
+   </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!--Custom Font-->
+</head>
+<track>
+
+  <div class="navbar">
+    <div class="navbar-logo">
+        <img src="{% static 'habit_tracker/img/logo-01.png' %}" alt="Logo">
+    </div>
+    <div class="navbar-links">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'habit_tracker' %}">Tracker</a>
+    </div>
+</div>
+
+<div class="content"> 
+  <h1>Habit Tracker</h1>
+  <p>Enter the habits you want to track using the following text field, habits can be edited and deleted.</p>
+
+  <div id="listBox">
+      <input type="text" id="inItemText"><button id="btnAdd">Add</button>
+  </div>
+  <div class="habits-parent">
+      <h4>Habits:</h4>
+      <ul id="habits">
+      </ul>
+  </div>
+  <script src="ToDoList.js"></script>
+<script>
+    function updateItemStatus() {
+        var cbId = this.id.replace("cb_", "");
+        var itemText = document.getElementById("item_" + cbId);
+
+        if (this.checked) {
+            itemText.style.textDecoration = "line-through";
+        } else {
+            itemText.style.textDecoration = "none";
+        }
+    }
+
+    function addNewItem(list, itemText) {
+        var date = new Date();
+        var id = "" + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
+
+        var listItem = document.createElement("li");
+        listItem.id = "li_" + id;
+
+        var checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        checkBox.id = "cb_" + id;
+        checkBox.onclick = updateItemStatus;
+
+        var span = document.createElement("span");
+        span.id = "item_" + id;
+        span.innerText = itemText;
+
+        var edit = document.createElement("a");
+        edit.href = "#";
+        edit.innerText = "edit";
+        edit.addEventListener("click", editItem);
+
+        var deleteBtn = document.createElement("a");
+        deleteBtn.href = "#";
+        deleteBtn.innerText = "delete";
+        deleteBtn.addEventListener("click", deleteItem);
+
+        listItem.appendChild(checkBox);
+        listItem.appendChild(span);
+        listItem.appendChild(edit);
+        listItem.appendChild(deleteBtn);
+
+        list.appendChild(listItem);
+    }
+
+    function editItem() {
+        var listItem = this.parentNode;
+        var itemText = listItem.querySelector("span").textContent;
+        var inItemText = document.getElementById("inItemText");
+
+        inItemText.value = itemText;
+        inItemText.focus();
+        inItemText.select();
+
+        listItem.remove();
+    }
+
+    function deleteItem() {
+        var listItem = this.parentNode;
+        listItem.remove();
+    }
+
+    var inItemText = document.getElementById("inItemText");
+    inItemText.focus();
+
+    var btnNew = document.getElementById("btnAdd");
+    btnNew.onclick = function () {
+        var inItemText = document.getElementById("inItemText");
+        var itemText = inItemText.value.trim();
+
+        if (!itemText) {
+            return false;
+        }
+
+        addNewItem(document.getElementById("habits"), itemText);
+
+        inItemText.value = "";
+        inItemText.focus();
+    };
+
+    inItemText.onkeyup = function (event) {
+        if (event.which == 13) {
+            var itemText = inItemText.value.trim();
+
+            if (!itemText) {
+                return false;
+            }
+
+            addNewItem(document.getElementById("habits"), itemText);
+
+            inItemText.value = "";
+            inItemText.focus();
+        }
+    };
+</script>
+</div>
+
+</body>
+</html>

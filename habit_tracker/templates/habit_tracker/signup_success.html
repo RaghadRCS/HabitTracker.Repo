@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habitifyr</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'habit_tracker/css/styles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'habit_tracker/img/favicon.png' %}">
+    <style>
+
+        body {
+            display: grid;
+            align-content: space-between; 
+            margin: 0;
+            font-family: "Poppins";
+        }
+
+        .custom-button {
+            background-color: #90CAF9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-button:hover {
+            background-color: #252525;
+            color: white;
+        }
+        
+        .custom-image {
+            max-width: 100%;
+            height: auto;
+            float: right;
+            margin-top: -510px;
+            margin-right: 250px;
+        }
+        
+        .content {
+            margin-top: 120px;
+            margin-left: 70px;
+        }
+        
+        .paragraph {
+            width: 400px;
+            margin-top: 50px;
+            word-wrap: break-word;
+            line-height: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 70px;
+            margin-top: 6px;
+        }
+
+        .navbar a:hover {
+            color: #90CAF9;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 150px;
+            margin-left: 55px;
+            margin-top: 15px;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            margin-left: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #252525;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: "Poppins";
+            padding: 35px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin-left: 5px;
+            padding-right: 50px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #90CAF9;
+        }
+
+        .copyrights {
+            padding-left: 50px;
+        }
+
+        .content {
+            margin-bottom: 175px; 
+        }
+
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!--Custom Font-->
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-logo">
+                <img src="{% static 'habit_tracker/img/logo-01.png' %}" alt="Logo">
+            </div>
+            <div class="navbar-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'habit_tracker' %}">Tracker</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Successful Sign Up!</h1>
+            <p class="paragraph">You have successfully signed up, click below button to go back to main page.</p>
+
+            <a href="{% url 'home' %}">
+                <button class="custom-button">Home</button>
+            </a>
+            </div>
+        
+        <div class="image-container">
+            <img class="custom-image" src="{% static 'habit_tracker/img/Sign-up-success.png' %}" alt="Example Image" width="450">
+        </div>
+
+        <footer class="footer">
+            <div class="copyrights">
+                © All Rights Reserved 2024
+            </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
